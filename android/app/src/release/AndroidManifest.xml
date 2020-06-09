@@ -5,7 +5,7 @@
   xmlns:tools="http://schemas.android.com/tools">
 
   <permission
-    android:name="io.tidepool.urchin.permission.C2D_MESSAGE"
+    android:name="com.cloudi.salud.permission.C2D_MESSAGE"
     android:protectionLevel="signature"/>
 
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" tools:node="remove" />

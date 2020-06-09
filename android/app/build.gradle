@@ -60,11 +60,11 @@ android {
   }
 
   defaultConfig {
-    applicationId 'io.tidepool.urchin'
+    applicationId 'com.cloudi.salud'
     minSdkVersion safeExtGet("minSdkVersion", 21)
     targetSdkVersion safeExtGet("targetSdkVersion", 28)
-    versionCode getVersionCode()
-    versionName '3.1.1'
+    versionCode 1//getVersionCode()
+    versionName '1.0.1'
     ndk {
       // We use different `abiFilters` for distributing
       // to be able to bundle old, incompatible SDKs.
@@ -89,12 +89,12 @@ android {
     debug {
       storeFile = file('../debug.keystore')
     }
-    release {
+    /*release {
       storeFile = isRunningOnTravis ? file("../../release-keystore.jks") : file(System.getenv("TIDEPOOL_KEYSTORE_FILE"))
       storePassword = isRunningOnTravis ? System.getenv("keystore_password") : getPassword("tidepool_keystore_store_password")
       signingConfigs.release.keyAlias = isRunningOnTravis ? System.getenv("keystore_alias") : System.getenv("TIDEPOOL_KEYSTORE_KEY_ALIAS")
       signingConfigs.release.keyPassword = isRunningOnTravis ? System.getenv("keystore_alias_password") : getPassword("tidepool_keystore_key_password")
-    }
+    }*/
   }
   buildTypes {
     debug {
@@ -106,7 +106,7 @@ android {
       minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
       zipAlignEnabled true
-      signingConfig signingConfigs.release
+      //signingConfig signingConfigs.release
     }
   }
   lintOptions {
