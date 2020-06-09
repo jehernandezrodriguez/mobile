@@ -4,11 +4,17 @@
     "slug": "Tidepool",
     "privacy": "public",
     "sdkVersion": "34.0.0",
-    "platforms": ["ios", "android"],
-    "version": "3.1.1",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/Icon-App-512x512@2x.png",
-    "assetBundlePatterns": ["**/fonts/*", "**/images/*"],
+    "assetBundlePatterns": [
+      "**/fonts/*",
+      "**/images/*"
+    ],
     "updates": {
       "enabled": false
     },
@@ -28,9 +34,14 @@
       "publishManifestPath": "ios/tidepool/Supporting/shell-app-manifest.json"
     },
     "android": {
-      "package": "io.tidepool.urchin",
+      "package": "com.cloudi.salud",
       "icon": "./assets/images/Icon-App-512x512@2x.png",
-      "permissions": ["ACCESS_NETWORK_STATE", "ACCESS_WIFI_STATE", "INTERNET"],
+      "versionCode": 1,
+      "permissions": [
+        "ACCESS_NETWORK_STATE",
+        "ACCESS_WIFI_STATE",
+        "INTERNET"
+      ],
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     },
