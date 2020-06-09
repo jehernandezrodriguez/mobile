@@ -92,7 +92,7 @@ class TidepoolApi {
 
     // If we transitioned to offline while this request was being fulfilled, just use the offline data instead
     if (ConnectionStatus.isOffline) {
-      return { errorMessage: "Check your Internet connection!" };
+      return { errorMessage: "¡Comprueba tu conexión a Internet!" };
     }
 
     return { sessionToken, userId, errorMessage };
@@ -770,9 +770,9 @@ class TidepoolApi {
             error.response &&
             (error.response.status === 400 || error.response.status === 401)
           ) {
-            reject(new Error("Unable to refresh token."));
+            reject(new Error("No se puede actualizar el token."));
           } else {
-            reject(new Error("Check your Internet connection!"));
+            reject(new Error("Comprueba tu conexión a Internet"));
           }
         });
     });
@@ -810,9 +810,9 @@ class TidepoolApi {
             error.response &&
             (error.response.status === 400 || error.response.status === 401)
           ) {
-            reject(new Error("Wrong email or password!"));
+            reject(new Error("¡Contraseña o correo incorrecto!"));
           } else {
-            reject(new Error("Check your Internet connection!"));
+            reject(new Error("¡Comprueba tu conexión a Internet!"));
           }
         });
     });
@@ -860,7 +860,7 @@ class TidepoolApi {
           } else {
             reject(
               new Error(
-                "No bgTarget was found in settings response data for user."
+                "No se encontró bgTarget en los datos de respuesta de configuración para el usuario."
               )
             );
           }
@@ -1144,7 +1144,7 @@ class TidepoolApi {
     let sourceVersion;
     if (Constants.appOwnership === "expo") {
       const systemName = Platform.OS === "ios" ? "iOS" : "Android";
-      sourceVersion = `${systemName} ${Constants.manifest.version} (Expo)`;
+      sourceVersion = `${systemName} ${Constants.manifest.version}`;
     } else {
       sourceVersion = `${DeviceInfo.getSystemName()} ${DeviceInfo.getVersion()} (${DeviceInfo.getBuildNumber()})`;
     }

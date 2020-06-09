@@ -90,7 +90,7 @@ class TidepoolApiCache {
         userId,
         profile: {},
         isAvailableOffline: false,
-        errorMessage: "Profile not available offline, this is unexpected!",
+        errorMessage: "Perfil no disponible sin conexión, ¡esto es inesperado!",
       };
     } catch (error) {
       const errorMessage = error.message;
@@ -123,7 +123,7 @@ class TidepoolApiCache {
         };
       }
 
-      const errorMessage = "No profile settings available offline";
+      const errorMessage = "No hay configuraciones de perfil disponibles sin conexión";
       return {
         userId,
         errorMessage,
