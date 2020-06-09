@@ -10,7 +10,7 @@ import Button from "./Button";
 // TODO: polish - the error message doesn't seem to scroll in sync with the rest of the form with KeyboardAvoidingView? But, only on iOS, it seems
 
 class SignInForm extends PureComponent {
-  static ACTIVITY_INDICATOR_VIEW_HEIGHT = 62;
+  static ACTIVITY_INDICATOR_VIEW_HEIGHT = 50;
 
   constructor(props) {
     super(props);
@@ -71,8 +71,9 @@ class SignInForm extends PureComponent {
         <glamorous.Image
           source={require("../../assets/images/tidepool-logo-horizontal.png")}
           width={282}
-          height={265}
+          height={272}
           marginBottom={25}
+          marginTop={0}
           alignSelf="center"
         />
         {this.renderErrorMessage()}
