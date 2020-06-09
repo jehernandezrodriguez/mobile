@@ -11,7 +11,7 @@
 	<key>isSplashScreenDisabled</key>
 	<true/>
 	<key>manifestUrl</key>
-	<string>exp://exp.host/@tidepool/Tidepool</string>
+	<string>exp://exp.host/@jehernandezrodriguez/Tidepool</string>
 	<key>releaseChannel</key>
 	<string>default</string>
 </dict>
