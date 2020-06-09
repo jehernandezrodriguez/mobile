@@ -33,7 +33,7 @@ class AddCommentButton extends PureComponent {
             allowFontScaling={false}
             style={theme.addCommentTextStyle}
           >
-            Add Comment
+            Agregar comentario
           </glamorous.Text>
         </glamorous.TouchableOpacity>
       </glamorous.View>

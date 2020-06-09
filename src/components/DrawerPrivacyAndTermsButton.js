@@ -15,7 +15,7 @@ class DrawerPrivacyAndTermsButton extends PureComponent {
     return (
       <DrawerButton
         onPress={this.onPress}
-        title="Privacy Policy and Terms of Use"
+        title="Privacidad y términos de uso"
       />
     );
   }

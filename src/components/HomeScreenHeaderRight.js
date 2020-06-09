@@ -30,7 +30,7 @@ class HomeScreenHeaderRight extends PureComponent {
     this.hideTipIfNeeded();
     if (ConnectionStatus.isOffline) {
       AlertManager.showOfflineMessage(
-        "It seems you’re offline, so you can't add notes."
+        "Parece que estás desconectado, por lo que no puedes agregar notas."
       );
     } else {
       Metrics.track({ metric: "Clicked add a note (Home screen)" });
@@ -63,7 +63,7 @@ class HomeScreenHeaderRight extends PureComponent {
         isVisible={toolTipVisible}
         placement="bottom"
         content={
-          <SimpleTextTooltipContent text="Now, add an event, a meal, or note." />
+          <SimpleTextTooltipContent text="Ahora, agregue un evento, una comida o una nota." />
         }
         arrowStyle={{
           marginLeft: 5,

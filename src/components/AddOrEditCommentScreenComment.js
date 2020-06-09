@@ -111,7 +111,7 @@ class AddOrEditCommentScreenComment extends PureComponent {
   renderSaveOrPostButton() {
     const { theme } = this.props;
     const { isDirty } = this.state;
-    const text = this.isAddMode ? "Post" : "Save";
+    const text = this.isAddMode ? "Enviar" : "Guardar";
     const disabled = !isDirty;
 
     return (

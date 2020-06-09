@@ -23,7 +23,7 @@ class SwitchProfileScreen extends PureComponent {
           allowFontScaling={false}
           numberOfLines={1}
         >
-          Switch Profile
+          Cambiar de perfil
         </Text>
       ),
       headerRight: (

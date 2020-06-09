@@ -17,7 +17,7 @@ class DrawerSignOutButton extends PureComponent {
     return (
       <DrawerButton
         onPress={this.onPress}
-        title="Log out"
+        title="Salir"
         subtitle={currentUser.username}
       />
     );

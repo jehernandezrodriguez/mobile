@@ -54,7 +54,7 @@ class NotesListItemComment extends PureComponent {
             allowFontScaling={false}
             numberOfLines={1}
           >
-            Delete
+            Eliminar
           </glamorous.Text>
         </glamorous.TouchableOpacity>
       );
@@ -79,7 +79,7 @@ class NotesListItemComment extends PureComponent {
             allowFontScaling={false}
             numberOfLines={1}
           >
-            Edit
+            Editar
           </glamorous.Text>
         </glamorous.TouchableOpacity>
       );

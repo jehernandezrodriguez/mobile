@@ -53,12 +53,12 @@ class HomeScreen extends PureComponent {
 
     if (isOffline) {
       AlertManager.showOfflineMessage(
-        "It seems you’re offline, so you can't delete notes."
+        "Parece que no estas conectado a internet, por lo que no puedes eliminar notas."
       );
     } else {
       AlertManager.showCancelOrDestructiveAlert({
         title: AlertManager.alertTitleDelete,
-        message: "Once you delete this note, it cannot be recovered.",
+        message: "Una vez que elimine esta nota, no se puede recuperar.",
         destructiveButtonText: AlertManager.alertButtonTextDelete,
         onPress: () => noteDeleteAsync({ currentProfile, note }),
       });
@@ -70,12 +70,12 @@ class HomeScreen extends PureComponent {
 
     if (isOffline) {
       AlertManager.showOfflineMessage(
-        "It seems you’re offline, so you can't delete comments."
+        "Parece que no tienes conexión a internet, por lo que no puedes eliminar comentarios."
       );
     } else {
       AlertManager.showCancelOrDestructiveAlert({
         title: AlertManager.alertTitleDelete,
-        message: "Once you delete this comment, it cannot be recovered.",
+        message: "Una vez que elimine este comentario, no se puede recuperar.",
         destructiveButtonText: AlertManager.alertButtonTextDelete,
         onPress: () => commentDeleteAsync({ note, currentProfile, comment }),
       });
@@ -99,16 +99,16 @@ class HomeScreen extends PureComponent {
 
     try {
       await MailComposer.composeAsync({
-        subject: "How to set up the Tidepool Uploader",
+        subject: "Cómo configurar el cargador de Tidepool",
         body:
-          "Please go to the following link on your computer to learn about setting up the Tidepool Uploader: https://support.tidepool.org/hc/en-us/articles/360019872871-How-to-use-the-Tidepool-Uploader",
+          "Vaya al siguiente enlace en su computador para obtener información sobre cómo configurar el sistema para cargar datos: https://support.tidepool.org/hc/en-us/articles/360019872871-How-to-use-the-Tidepool-Uploader",
 
         recipients: [currentUserEmail],
       });
     } catch (error) {
       Alert.alert(
         "Error",
-        "Unable to send email. You may need to configure email settings on your device.",
+        "No se puede enviar el correo electronico. Es posible que deba configurar los ajustes de correo electrónico en su dispositivo.",
         [{ text: "OK" }]
       );
     }

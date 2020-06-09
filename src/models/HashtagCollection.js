@@ -2,12 +2,12 @@ import twitter from "twitter-text";
 
 class HashtagCollection {
   static defaultHashtags = [
-    "#exercise",
-    "#meal",
-    "#sitechange",
-    "#sensorchange",
-    "#juicebox",
-    "#devicesetting",
+    "#ejercicio",
+    "#comida",
+    "#cambioSitio",
+    "#cambioSensor",
+    "#cajaJugo",
+    "#configuracionDispositivo",
   ];
 
   hashtagsSortedByCount = [];

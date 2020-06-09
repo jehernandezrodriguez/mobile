@@ -24,9 +24,9 @@ class GraphNoData extends PureComponent {
       isAvailableOffline,
     } = this.props;
 
-    let noDataText = "No data";
+    let noDataText = "No hay datos";
     if (isOffline && !isAvailableOffline) {
-      noDataText = "No offline data available";
+      noDataText = "No hay datos por no tener conexión";
     }
 
     return (
@@ -54,7 +54,7 @@ class GraphNoData extends PureComponent {
             allowFontScaling={false}
             style={theme.graphHowToUploadLabelStyle}
           >
-            How to upload
+            ¿Como cargar datos?
           </glamorous.Text>
         </glamorous.TouchableOpacity>
       </glamorous.View>

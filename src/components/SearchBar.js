@@ -147,7 +147,7 @@ SearchBar.propTypes = {
 };
 
 SearchBar.defaultProps = {
-  placeholderText: "Search",
+  placeholderText: "Buscar",
   searchText: "",
 };
 

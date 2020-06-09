@@ -48,8 +48,8 @@ import AlertManager from "../models/AlertManager";
 // FIXME: Currently we're handling keyboard hide/show events to ajust size of the TextInput. Ideally should be able to simplify with KeyboardAvoidingView, but, see: https://github.com/facebook/react-native/issues/16826
 // FIXME: We're importing Header directly and rendering in this modal, rather than getting that for free as part of navigator. This is needed due to bugs in React Navigation related to double headers with nested navigators. We have to set headerMode to 'none' for the modal stack navigator (like the one presenting this screen), which prevents the double header on the parent navigator, but, also removes it from the nested one.
 
-const ADD_OR_EDIT_SCREEN_ADD_NOTE_TITLE = "Add Note";
-const ADD_OR_EDIT_SCREEN_EDIT_NOTE_TITLE = "Edit Note";
+const ADD_OR_EDIT_SCREEN_ADD_NOTE_TITLE = "Agregar Nota";
+const ADD_OR_EDIT_SCREEN_EDIT_NOTE_TITLE = "Editar Nota";
 
 class AddOrEditNoteScreen extends PureComponent {
   static navigationOptions = () => ({
@@ -307,7 +307,7 @@ class AddOrEditNoteScreen extends PureComponent {
 
     if (ConnectionStatus.isOffline) {
       AlertManager.showOfflineMessage(
-        "It seems you’re offline, so your note can’t be saved."
+        "Parece que estás desconectado, por lo que tu nota no se puede guardar."
       );
       return;
     }
@@ -346,7 +346,7 @@ class AddOrEditNoteScreen extends PureComponent {
   showSaveChangesAlert = () => {
     AlertManager.showDiscardOrSaveAlert({
       message:
-        "You have made changes to this note. Would you like to save these changes?",
+        "Ha realizado cambios a esta nota. ¿Desea guardar estos cambios?",
       onPressDiscard: this.discardAndGoBack,
       onPressSave: this.saveAndGoBack,
     });
@@ -355,7 +355,7 @@ class AddOrEditNoteScreen extends PureComponent {
   showDiscardNoteAlert = () => {
     AlertManager.showCancelOrDestructiveAlert({
       title: AlertManager.alertTitleDiscard,
-      message: "If you close this note, your note will be lost.",
+      message: "Si cierra esta nota, su nota se perderá.",
       destructiveButtonText: AlertManager.alertButtonTextDiscard,
       onPress: this.discardAndGoBack,
     });
@@ -479,7 +479,7 @@ class AddOrEditNoteScreen extends PureComponent {
           paddingRight={16}
           style={this.theme.editButtonTextStyle}
         >
-          {"Edit"}
+          {"Editar fecha"}
         </glamorous.Text>
       </glamorous.TouchableOpacity>
     );
@@ -554,7 +554,7 @@ class AddOrEditNoteScreen extends PureComponent {
           paddingRight={16}
           style={this.theme.editButtonTextStyle}
         >
-          {isEditingTimestamp ? "Done" : "Edit"}
+          {isEditingTimestamp ? "Hecho" : "Editar"}
         </glamorous.Text>
       </glamorous.TouchableOpacity>
     );
@@ -643,7 +643,7 @@ class AddOrEditNoteScreen extends PureComponent {
         returnKeyType="default"
         onChangeText={this.onChangeText}
         onContentSizeChange={undefined}
-        placeholder={"What\u2019s going on?"}
+        placeholder="¿Que esta pensando?"
         onFocus={() => {
           this.stopEditingTimestamp();
         }}
@@ -680,7 +680,7 @@ class AddOrEditNoteScreen extends PureComponent {
           headerRight: (
             <ThemeProvider theme={this.theme}>
               <ModalScreenHeaderRight
-                actionTitle="Save"
+                actionTitle="Guardar"
                 action={this.saveAndGoBack}
                 disabled={!isDirty}
               />
@@ -707,7 +707,7 @@ class AddOrEditNoteScreen extends PureComponent {
             headerRight: (
               <ThemeProvider theme={this.theme}>
                 <ModalScreenHeaderRight
-                  actionTitle="Save"
+                  actionTitle="Guardar"
                   action={this.saveAndGoBack}
                   disabled={!isDirty}
                 />

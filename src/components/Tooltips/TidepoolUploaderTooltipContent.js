@@ -21,14 +21,13 @@ class TidepoolUploaderTooltipContent extends PureComponent {
         >
           Woohoo!
           {"\n\n"}
-          Last step: to get pump data, you need the Tidepool Uploader on your
-          computer.
+          Último paso: para obtener datos de la bomba, necesita el sistema Uploader en su computador.
         </glamorous.Text>
         <glamorous.View flexDirection="row" justifyContent="space-between">
           <Button
             containerStyle={{ width: 115, paddingLeft: 0, paddingRight: 0 }}
             onPress={onPressEmailLink}
-            title="Email Link"
+            title="Vía email"
             textStyle={this.theme.toolTipContentButtonTextStyle}
           />
           <Button

@@ -66,7 +66,7 @@ class ProfileListItem extends PureComponent {
         numberOfLines={1}
         color={titleColor}
       >
-        {currentUserId === userId ? "(You) " : null}
+        {currentUserId === userId ? "(Yo) " : null}
         {fullName}
       </glamorous.Text>
     );

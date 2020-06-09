@@ -89,7 +89,7 @@ class SignInForm extends PureComponent {
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
-          placeholder="Email"
+          placeholder="Correo electrónico"
           placeholderTextColor={theme.signInEditFieldExtra.placeholderTextColor}
           keyboardAppearance={theme.signInEditFieldExtra.keyboardAppearance}
           borderColor="#e2e3e4"
@@ -117,7 +117,7 @@ class SignInForm extends PureComponent {
           returnKeyType="go"
           selectionColor="#657ef6"
           underlineColorAndroid="#657ef6"
-          placeholder="Password"
+          placeholder="Contraseña"
           placeholderTextColor={theme.signInEditFieldExtra.placeholderTextColor}
           keyboardAppearance={theme.signInEditFieldExtra.keyboardAppearance}
           borderColor="#e2e3e4"
@@ -142,7 +142,7 @@ class SignInForm extends PureComponent {
               alignSelf="flex-start"
               paddingLeft={3}
             >
-              Forgot password?
+              ¿Olvido la contraseña?
             </glamorous.Text>
           </glamorous.TouchableOpacity>
         </glamorous.View>
@@ -153,7 +153,7 @@ class SignInForm extends PureComponent {
         >
           <Button
             onPress={this.onPressSignIn}
-            title="Log in"
+            title="Ingresar"
             disabled={
               signingIn || username.length === 0 || password.length === 0
             }

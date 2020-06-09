@@ -2,14 +2,14 @@ import { differenceInMilliseconds } from "date-fns";
 import { Alert } from "react-native";
 
 class AlertManager {
-  alertTitleDiscard = "Discard?";
-  alertTitleDelete = "Delete?";
-  alertTitleOffline = "No Network Connection";
-  alertTitleUnknownError = "Unknown Error Occurred";
-  alertButtonTextCancel = "Cancel";
-  alertButtonTextDiscard = "Discard";
-  alertButtonTextDelete = "Delete";
-  alertButtonTextSave = "Save";
+  alertTitleDiscard = "¿Descartar?";
+  alertTitleDelete = "¿Eliminar?";
+  alertTitleOffline = "No hay conexión de internet!";
+  alertTitleUnknownError = "Se produjo un error desconocido";
+  alertButtonTextCancel = "Cancelar";
+  alertButtonTextDiscard = "Descartar";
+  alertButtonTextDelete = "Eliminar";
+  alertButtonTextSave = "Guardar";
 
   showDiscardOrSaveAlert({ message, onPressDiscard, onPressSave }) {
     Alert.alert("Save?", message, [
@@ -60,13 +60,13 @@ class AlertManager {
       if (errorMessage === "Network Error") {
         Alert.alert(
           this.alertTitleOffline,
-          `It seems you’re offline, so your notes can’t be loaded or saved.`,
+          `Parece que estás desconectado, por lo que tus notas no se pueden cargar ni guardar.`,
           [{ text: "OK" }]
         );
       } else {
         Alert.alert(
           this.alertTitleUnknownError,
-          `An unknown error occurred. We are working hard to resolve this issue.`,
+          `Un error desconocido ocurrió. Estamos trabajando para resolver este problema.`,
           [{ text: "OK" }]
         );
       }

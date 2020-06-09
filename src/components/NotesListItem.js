@@ -156,7 +156,7 @@ class NotesListItem extends PureComponent {
     const { note, navigateEditNote, isOffline } = this.props;
     if (isOffline) {
       AlertManager.showOfflineMessage(
-        "It seems you’re offline, so you can't edit notes."
+        "Parece que estás desconectado, por lo que no puedes editar notas."
       );
     } else {
       Metrics.track({ metric: "Clicked edit a note (Home screen)" });
@@ -169,7 +169,7 @@ class NotesListItem extends PureComponent {
     const { note, navigateAddComment, isOffline } = this.props;
     if (isOffline) {
       AlertManager.showOfflineMessage(
-        "It seems you’re offline, so you can't add comments."
+        "Parece que estás desconectado, por lo que no puedes agregar comentarios."
       );
     } else {
       Metrics.track({ metric: "Clicked add comment" });
@@ -186,7 +186,7 @@ class NotesListItem extends PureComponent {
     const { note, navigateEditComment, isOffline } = this.props;
     if (isOffline) {
       AlertManager.showOfflineMessage(
-        "It seems you’re offline, so you can't edit comments."
+        "Parece que estás desconectado, por lo que no puedes editar comentarios."
       );
     } else {
       Metrics.track({ metric: "Clicked edit comment" });
@@ -293,7 +293,7 @@ class NotesListItem extends PureComponent {
               allowFontScaling={false}
               numberOfLines={1}
             >
-              Delete
+              Eliminar
             </glamorous.Text>
           </glamorous.TouchableOpacity>
         );
@@ -321,7 +321,7 @@ class NotesListItem extends PureComponent {
               allowFontScaling={false}
               numberOfLines={1}
             >
-              Edit
+              Editar
             </glamorous.Text>
           </glamorous.TouchableOpacity>
         );
@@ -335,7 +335,7 @@ class NotesListItem extends PureComponent {
     const { theme, currentProfile, note } = this.props;
 
     if (this.shouldRenderUserLabelSection()) {
-      const userLabelText = `${note.userFullName} to ${
+      const userLabelText = `${note.userFullName} para ${
         currentProfile.fullName
       }`;
 

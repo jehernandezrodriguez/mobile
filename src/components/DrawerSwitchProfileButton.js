@@ -16,7 +16,7 @@ class DrawerSwitchProfileButton extends PureComponent {
     return (
       <DrawerButton
         onPress={this.onPress}
-        title="Switch Profile"
+        title="Cambiar de perfil"
         hasDisclosureIndicator
       />
     );

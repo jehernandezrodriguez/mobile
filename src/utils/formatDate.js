@@ -6,9 +6,9 @@ import isThisYear from "date-fns/is_this_year";
 const formatDateForNoteList = date => {
   let dayString;
   if (isToday(date)) {
-    dayString = "Today";
+    dayString = "Hoy";
   } else if (isYesterday(date)) {
-    dayString = "Yesterday";
+    dayString = "Ayer";
   } else if (isThisYear(date)) {
     dayString = format(date, "MMM D");
   } else {
@@ -17,7 +17,7 @@ const formatDateForNoteList = date => {
 
   const timeString = format(date, "h:mm a");
 
-  return `${dayString} at ${timeString}`;
+  return `${dayString} a las ${timeString}`;
 };
 
 const formatDateAndTimeForAddOrEditNote = date => {

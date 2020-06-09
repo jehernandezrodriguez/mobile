@@ -25,8 +25,8 @@ class AddOrEditCommentScreen extends PureComponent {
   static navigationOptions = ({ navigation }) => {
     const headerStyle = { backgroundColor: Colors.darkPurple };
     const title = navigation.state.params.comment
-      ? "Edit Comment"
-      : "Add Comment";
+      ? "Editar comentario"
+      : "Agregar comentario";
 
     return {
       drawerLockMode: "locked-closed",
@@ -201,7 +201,7 @@ class AddOrEditCommentScreen extends PureComponent {
   addOrSaveAndGoBack = ({ messageText, timestampAddComment }) => {
     if (ConnectionStatus.isOffline) {
       AlertManager.showOfflineMessage(
-        "It seems you’re offline, so your comment can’t be saved."
+        "Parece que no estás conectado a internet, por lo que tu comentario no se puede guardar."
       );
       return;
     }

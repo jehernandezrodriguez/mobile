@@ -24,7 +24,7 @@ class VersionAndApiEnvironment extends PureComponent {
           v
           {version}
           {apiEnvironment !== API_ENVIRONMENT_PRODUCTION
-            ? ` on ${apiEnvironment}`
+            ? ` En ${apiEnvironment}`
             : ""}
         </glamorous.Text>
       </glamorous.View>
