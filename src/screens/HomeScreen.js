@@ -151,6 +151,7 @@ class HomeScreen extends PureComponent {
         errorMessage,
         fetching,
         notes,
+        notifications,
         searchText,
         toggleExpandedNotesCount,
       },
@@ -170,6 +171,7 @@ class HomeScreen extends PureComponent {
             currentUser={currentUser}
             notes={notes}
             toggleExpandedNotesCount={toggleExpandedNotesCount}
+            notifications={notifications}
             searchText={searchText}
             fetching={fetching}
             errorMessage={errorMessage}
@@ -189,7 +191,7 @@ class HomeScreen extends PureComponent {
             isOffline={isOffline}
           />
           <Tooltip
-            isVisible={toolTipVisible}
+            isVisible={false}
             placement="top"
             content={(
               <TidepoolUploaderTooltipContent

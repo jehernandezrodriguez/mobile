@@ -24,9 +24,9 @@ const notesFetchDidStart = ({ profile }) => ({
   payload: { profile },
 });
 
-const notesFetchDidSucceed = ({ profile, notes }) => ({
+const notesFetchDidSucceed = ({ profile, notes, notifications }) => ({
   type: NOTES_FETCH_DID_SUCCEED,
-  payload: { profile, notes },
+  payload: { profile, notes, notifications },
 });
 
 const notesFetchDidFail = ({ profile, errorMessage }) => ({
@@ -41,10 +41,14 @@ const notesFetchAsync = ({ profile }) => async dispatch => {
     userId: profile.userId,
   });
 
+  const { notifications } = await api().fetchNotificationsAsync({
+    userId: profile.userId,
+  })
+
   if (errorMessage) {
     dispatch(notesFetchDidFail({ profile, errorMessage }));
   } else {
-    dispatch(notesFetchDidSucceed({ profile, notes }));
+    dispatch(notesFetchDidSucceed({ profile, notes, notifications  }));
   }
 };
 

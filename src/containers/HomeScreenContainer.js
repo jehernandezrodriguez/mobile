@@ -24,6 +24,7 @@ const mapStateToProps = state => ({
   currentUser: state.auth,
   notes: state.notesFetch.notes,
   searchText: state.notesFetch.searchText,
+  notifications: state.notesFetch.notifications,
   commentsFetchDataByMessageId: state.commentsFetch,
   graphDataFetchDataByMessageId: state.graphDataFetch,
   errorMessage: state.notesFetch.errorMessage,

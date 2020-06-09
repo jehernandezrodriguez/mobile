@@ -6,7 +6,7 @@ const APP_VERSION_LOAD = "APP_VERSION_LOAD";
 const appVersionLoad = () => {
   let version;
   if (Constants.appOwnership === "expo") {
-    version = `${Constants.manifest.version} (Expo)`;
+    version = `${Constants.manifest.version}`;
   } else {
     version = `${DeviceInfo.getVersion()} (${DeviceInfo.getBuildNumber()})`;
   }

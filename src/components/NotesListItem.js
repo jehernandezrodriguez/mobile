@@ -30,6 +30,7 @@ import { CommentPropType } from "../prop-types/comment";
 import { UserPropType } from "../prop-types/user";
 import { ProfilePropType } from "../prop-types/profile";
 
+import api from "../api/api";
 // FIXME: Initial tap after having done a pull-to-refresh is ignored?? We don't even get the onPress event! Tapping again then works (and continues to work) throughout the list. NB: Android doesn't seem to have this issue! Only iOS!
 
 // TODO: use NotePropType for note and add full schema for it
@@ -229,6 +230,7 @@ class NotesListItem extends PureComponent {
       if (!wasExpanded) {
         if (fetchComments && !isFetchingComments) {
           commentsFetchAsync({ messageId: note.id });
+          api().readNotificationAsync({ noteId: note.id, userId})
         }
         if (!isFetchingGraphData) {
           const { timestamp } = note;
@@ -522,12 +524,14 @@ class NotesListItem extends PureComponent {
   }
 
   render() {
-    const { style } = this.props;
+    const { style, readed } = this.props;
     const { fadeAnimation } = this.state;
+
+    const color = readed ? 'white' : '#76d3a6'
 
     return (
       <Animated.View
-        style={[style, { backgroundColor: "white", opacity: fadeAnimation }]}
+        style={[style, { backgroundColor: color, opacity: fadeAnimation }]}
       >
         <glamorous.TouchableOpacity
           activeOpacity={1}
@@ -563,7 +567,9 @@ NotesListItem.propTypes = {
     timestamp: PropTypes.instanceOf(Date),
     messageText: PropTypes.string.isRequired,
     initiallyExpanded: PropTypes.bool,
+    readed: PropTypes.bool,
   }).isRequired,
+  readed: PropTypes.bool.isRequired,
   commentsFetchAsync: PropTypes.func.isRequired,
   commentsFetchData: PropTypes.shape({
     comments: PropTypes.arrayOf(CommentPropType),

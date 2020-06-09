@@ -10,7 +10,7 @@ import {
 import glamorous, { ThemeProvider } from "glamorous-native";
 
 import PrimaryTheme from "../themes/PrimaryTheme";
-import MadePossibleBy from "../components/MadePossibleBy";
+// import MadePossibleBy from "../components/MadePossibleBy";
 import SignUp from "../components/SignUp";
 import SignInForm from "../components/SignInForm";
 import VersionAndApiEnvironment from "../components/VersionAndApiEnvironment";
@@ -159,7 +159,7 @@ class SignInScreen extends PureComponent {
           justifyContent="center"
           alignItems="center"
         >
-          <MadePossibleBy />
+          {/* <MadePossibleBy /> */}
           <VersionAndApiEnvironment
             version={version}
             apiEnvironment={apiEnvironment}

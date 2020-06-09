@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { ViewPropTypes } from "react-native";
 import glamorous, { withTheme } from "glamorous-native";
 
-import { ThemePropType } from "../prop-types/theme";
+// import { ThemePropType } from "../prop-types/theme";
 
 class SignUp extends PureComponent {
   onPressSignUp = () => {
@@ -13,28 +13,23 @@ class SignUp extends PureComponent {
   };
 
   render() {
-    const { theme, style } = this.props;
+    const { style } = this.props;
 
     return (
       <glamorous.View style={style}>
         <glamorous.TouchableOpacity
           flexDirection="row"
           alignItems="center"
-          onPress={this.onPressSignUp}
+          onPress={null}
           hitSlop={{ left: 10, right: 10, top: 10, bottom: 10 }}
         >
-          <glamorous.Image
+          {/*  <glamorous.Image
             source={require("../../assets/images/signup-plus.png")}
-            width={20}
-            height={20}
+            width={0}
+            height={0}
             marginRight={10}
           />
-          <glamorous.Text
-            allowFontScaling={false}
-            style={theme.signUpTextStyle}
-          >
-            Sign up
-          </glamorous.Text>
+           Registrarse */}
         </glamorous.TouchableOpacity>
       </glamorous.View>
     );
@@ -42,7 +37,7 @@ class SignUp extends PureComponent {
 }
 
 SignUp.propTypes = {
-  theme: ThemePropType.isRequired,
+  // theme: ThemePropType.isRequired,
   style: ViewPropTypes.style,
   navigateSignUp: PropTypes.func.isRequired,
 };

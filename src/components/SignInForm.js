@@ -70,8 +70,8 @@ class SignInForm extends PureComponent {
       <glamorous.View onLayout={this.onContainerViewLayout}>
         <glamorous.Image
           source={require("../../assets/images/tidepool-logo-horizontal.png")}
-          width={262}
-          height={28.5}
+          width={282}
+          height={265}
           marginBottom={25}
           alignSelf="center"
         />
@@ -134,9 +134,9 @@ class SignInForm extends PureComponent {
         <glamorous.View flexDirection="row" marginLeft={-8}>
           <glamorous.TouchableOpacity
             padding={8}
-            onPress={this.onPressForgotPassword}
+            onPress={null}
           >
-            <glamorous.Text
+            {/*  <glamorous.Text
               allowFontScaling={false}
               style={theme.forgotPasswordTextStyle}
               alignSelf="flex-start"
@@ -144,6 +144,7 @@ class SignInForm extends PureComponent {
             >
               ¿Olvido la contraseña?
             </glamorous.Text>
+            */}
           </glamorous.TouchableOpacity>
         </glamorous.View>
         <glamorous.View

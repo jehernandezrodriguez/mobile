@@ -1,4 +1,6 @@
 import { AsyncStorage, NativeModules } from "react-native";
+import { Notifications } from 'expo';
+import * as Permissions from 'expo-permissions';
 
 import { currentProfileRestoreAsync } from "./currentProfile";
 import { navigateHome, navigateSignIn } from "./navigation";
@@ -50,8 +52,12 @@ const authSignInReset = () => () => {
 };
 
 const authSignOutAsync = () => async dispatch => {
+  let authUser = {};
   try {
+    authUser = JSON.parse(await AsyncStorage.getItem(AUTH_USER_KEY)) || {};
     AsyncStorage.removeItem(AUTH_USER_KEY);
+    if (authUser)
+      api().signOutAsync({userId: authUser.userId, token: authUser.tokenNotification })
   } catch (error) {
     // console.log(
     //   `authSignOutAsync: failed to remove auth token on sign out`,
@@ -113,6 +119,31 @@ const authSignInAsync = ({ username, password }) => async dispatch => {
       const authUser = { sessionToken, userId, username, ...profile };
       const { fullName } = profile;
       try {
+
+      const { status: existingStatus } = await Permissions.getAsync(
+         Permissions.NOTIFICATIONS
+       );
+       let finalStatus = existingStatus;
+
+       // Only ask if permissions have not already been determined, for iOS.
+       if (existingStatus !== 'granted') {
+         const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+         finalStatus = status;
+       }
+
+       let rol = null
+       if ('clinic' in authUser)
+         rol = 'clinic'
+      else if ('patient' in authUser)
+               rol = 'patient'
+
+      // Stop here if the user did not grant permissions
+       if (finalStatus === 'granted' && rol) {
+           const token = await Notifications.getExpoPushTokenAsync();
+           api().saveTokenAsync({ token, userId, rol });
+           authUser.tokenNotification = token
+       }
+
         AsyncStorage.setItem(AUTH_USER_KEY, JSON.stringify(authUser));
         dispatch(authSignInDidSucceed({ authUser }));
         const { isOnline } = ConnectionStatus;

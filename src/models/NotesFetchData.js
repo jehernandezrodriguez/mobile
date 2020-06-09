@@ -11,6 +11,7 @@ class NotesFetchData {
   searchText = "";
   unfilteredNotes = [];
   notes = [];
+  notifications = [];
   toggleExpandedNotesCount = 0; // HACK: This is a hack to force toggling of expanded note state to workaround some GL renderer issues when updating notes in list with expanded graphs. See: https://trello.com/c/c32gFG1U
 
   didStart({ userId }) {
@@ -24,7 +25,7 @@ class NotesFetchData {
     this.notes = [];
   }
 
-  didSucceed({ notes, profile }) {
+  didSucceed({ notes, profile, notifications }) {
     if (profile.userId === this.userId) {
       this.userId = profile.userId;
       this.errorMessage = "";
@@ -37,6 +38,7 @@ class NotesFetchData {
       this.hashtags = this.hashtagCollection.hashtagsSortedByCount;
       this.unfilteredNotes = notes;
       this.filterNotes();
+      this.notifications = notifications;
     } else {
       Logger.logWarning(
         `didSucceed called for unexpected user, or when user was signed out, ignoring, userId: ${
@@ -53,6 +55,7 @@ class NotesFetchData {
       this.fetched = false;
       this.unfilteredNotes = [];
       this.notes = [];
+      this.notifications = [];
     } else {
       Logger.logWarning(
         `didFail called for unexpected user, or when user was signed out, ignoring, userId: ${

@@ -9,7 +9,7 @@ import DrawerHealth from "./DrawerHealth";
 import DrawerCurrentUser from "./DrawerCurrentUser";
 import DrawerSwitchProfileButton from "./DrawerSwitchProfileButton";
 import DrawerSupportButton from "./DrawerSupportButton";
-import DrawerPrivacyAndTermsButton from "./DrawerPrivacyAndTermsButton";
+// import DrawerPrivacyAndTermsButton from "./DrawerPrivacyAndTermsButton";
 import DrawerSignOutButton from "./DrawerSignOutButton";
 import Divider from "./Divider";
 import DebugSettingsTouchable from "./DebugSettingsTouchable";
@@ -30,7 +30,7 @@ class Drawer extends PureComponent {
       notesSwitchProfileAndFetchAsync,
       navigateSwitchProfile,
       navigateSupport,
-      navigatePrivacyAndTerms,
+      // navigatePrivacyAndTerms,
       authSignOutAsync,
     } = this.props;
 
@@ -91,32 +91,32 @@ class Drawer extends PureComponent {
                 data: [{ key: "switchProfileButtonDivider" }],
                 renderItem: () => <Divider />,
               },
-              {
-                data: [{ key: "supportButton" }],
-                renderItem: () => (
-                  <DrawerSupportButton navigateSupport={navigateSupport} />
-                ),
-              },
-              {
-                data: [{ key: "supportButtonDivider" }],
-                renderItem: () => <Divider />,
-              },
-              {
-                data: [
-                  {
-                    key: "privacyAndTermsButton",
-                  },
-                ],
-                renderItem: () => (
-                  <DrawerPrivacyAndTermsButton
-                    navigatePrivacyAndTerms={navigatePrivacyAndTerms}
-                  />
-                ),
-              },
-              {
-                data: [{ key: "privacyAndTermsButtonDivider" }],
-                renderItem: () => <Divider />,
-              },
+              // {
+              //   data: [{ key: "supportButton" }],
+              //   renderItem: () => (
+              //     <DrawerSupportButton navigateSupport={navigateSupport} />
+              //   ),
+              // },
+              // {
+              //   data: [{ key: "supportButtonDivider" }],
+              //   renderItem: () => <Divider />,
+              // },
+              // {
+              //   data: [
+              //     {
+              //       key: "privacyAndTermsButton",
+              //     },
+              //   ],
+              //   renderItem: () => (
+              //     <DrawerPrivacyAndTermsButton
+              //       navigatePrivacyAndTerms={navigatePrivacyAndTerms}
+              //     />
+              //   ),
+              // },
+              // {
+              //   data: [{ key: "privacyAndTermsButtonDivider" }],
+              //   renderItem: () => <Divider />,
+              // },
               {
                 data: [{ currentUser, key: "signOutButton" }],
                 renderItem: ({ item }) => (
@@ -159,7 +159,7 @@ Drawer.propTypes = {
   navigateDrawerClose: PropTypes.func.isRequired,
   navigateSwitchProfile: PropTypes.func.isRequired,
   navigateSupport: PropTypes.func.isRequired,
-  navigatePrivacyAndTerms: PropTypes.func.isRequired,
+  // navigatePrivacyAndTerms: PropTypes.func.isRequired,
   navigateDebugSettings: PropTypes.func.isRequired,
   authSignOutAsync: PropTypes.func.isRequired,
   currentUser: UserPropType.isRequired,

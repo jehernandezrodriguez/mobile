@@ -42,9 +42,9 @@ function notesFetch(
       break;
     }
     case NOTES_FETCH_DID_SUCCEED: {
-      const { notes, profile } = action.payload;
+      const { notes, profile, notifications } = action.payload;
       const { notesFetchData } = state;
-      notesFetchData.didSucceed({ notes, profile });
+      notesFetchData.didSucceed({ notes, profile, notifications });
       nextState = { ...notesFetchData, notesFetchData };
       break;
     }

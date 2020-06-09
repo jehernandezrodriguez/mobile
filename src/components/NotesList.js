@@ -169,10 +169,19 @@ class NotesList extends PureComponent {
       graphRenderer,
       toggleExpandedNotesCount,
       isOffline,
+      notifications,
     } = this.props;
+
+    let readed = true
+
+    for (let i = 0; i < notifications.length; i+=1) {
+     if (notifications[i].id === item.id)
+          readed = false;
+    }
     return (
       <NotesListItem
         note={item}
+        readed={readed}
         currentUser={currentUser}
         currentProfile={currentProfile}
         commentsFetchData={commentsFetchDataByMessageId[item.id]}
@@ -194,7 +203,7 @@ class NotesList extends PureComponent {
   };
 
   render() {
-    const { notes, searchText } = this.props;
+    const { notes, searchText, notifications } = this.props;
     const { isZoomingGraph, shouldShowSearchBar, refreshing } = this.state;
 
     return (
@@ -213,6 +222,7 @@ class NotesList extends PureComponent {
           }}
           removeClippedSubviews={false} // Make sure that clipped views aren't removed, else a note that is toggled open and then scrolled out view will lose its GL context!
           data={notes}
+          notifications={notifications}
           extraData={this.state}
           keyExtractor={this.keyExtractor}
           renderItem={this.renderNote}
@@ -239,6 +249,7 @@ NotesList.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.object).isRequired,
   toggleExpandedNotesCount: PropTypes.number,
   searchText: PropTypes.string,
+  notifications: PropTypes.arrayOf(PropTypes.object).isRequired,
   errorMessage: PropTypes.string,
   fetching: PropTypes.bool,
   notesFetchAsync: PropTypes.func.isRequired,

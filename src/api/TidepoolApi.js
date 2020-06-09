@@ -1,4 +1,4 @@
-import { Platform } from "react-native";
+import { Platform, Alert } from "react-native";
 import axios from "axios";
 import uuidv4 from "uuid/v4";
 import parse from "date-fns/parse";
@@ -21,8 +21,9 @@ import { TidepoolApiCacheControl } from "./TidepoolApiCacheControl";
 const timeout = 30000;
 
 class TidepoolApi {
-  constructor({ baseUrl }) {
+  constructor({ baseUrl, baseURLNotifications }) {
     this.baseUrl = baseUrl;
+    this.baseURLNotifications = baseURLNotifications;
     this.sessionToken = "";
     this.tasksInProgress = 0; // Count of in-flight TidepoolApi tasks
 
@@ -360,6 +361,51 @@ class TidepoolApi {
         errorMessage: error.message,
       }));
 
+      // rol a notificar
+      let rol = '';
+
+      if ('clinic' in currentUser)
+        rol = 'clinic'
+      else if ('patient' in currentUser)
+        rol = 'patient'
+
+      const data = { rol,
+                     id: currentProfile.currentUserId,
+                     time: note.timestamp.toISOString(),
+                     fullName: currentUser.fullName ,
+                     noteId: note.id,
+                     senderId: currentUser.userId,
+                    }
+
+      if (rol === 'patient') {
+         const {clinics} = await this.fetchProfileUsersPromise({userId: currentProfile.userId})
+         for (let i = 0; i < clinics.length; i += 1) {
+             if (clinics[i].userid) {
+               data.id = clinics[i].userid
+               this.saveNotificationPromise(data).catch(() => {
+                   Alert.alert(
+                     "Error",
+                     "No se puede notificar al usuario. Es posible que necesite reiniciar la aplicación.",
+                     [{ text: "OK" }]
+                   );}
+               );
+
+             }
+         }
+      } else if (rol === 'clinic') { // send patient notification
+          data.id = note.groupId
+          this.saveNotificationPromise(data)
+                                    .then(() => {})
+                                    .catch(() => {
+                                        Alert.alert(
+                                          "Error",
+                                          "No se puede notificar al usuario. Es posible que necesite reiniciar la aplicación.",
+                                          [{ text: "OK" }]
+                                        );}
+                                    );
+      }
+
+
     this.tasksInProgress -= 1;
 
     if (!errorMessage && ConnectionStatus.isOnline) {
@@ -381,6 +427,52 @@ class TidepoolApi {
       .catch(error => ({
         errorMessage: error.message,
       }));
+
+      // rol a notificar
+        let rol = '';
+
+        if ('clinic' in currentProfile)
+          rol = 'clinic'
+        else if ('patient' in currentProfile)
+          rol = 'patient'
+
+        const data = { rol,
+                       id: currentProfile.currentUserId,
+                       time: note.timestamp.toISOString(),
+                       fullName: currentProfile.fullName,
+                       noteId: note.id,
+                       senderId: currentProfile.userId,
+                      }
+        if (rol === 'patient') { // notificar doctores
+           const {clinics} = await this.fetchProfileUsersPromise({userId: currentProfile.userId})
+           for (let i = 0; i < clinics.length; i += 1) {
+              if (clinics[i].userid) {
+               data.id = clinics[i].userid
+               this.saveNotificationPromise(data)
+               .then(() => {})
+               .catch(() => {
+                   Alert.alert(
+                     "Error",
+                     "No se puede notificar al otro usuario. Es posible que necesite reiniciar la aplicación.",
+                     [{ text: "OK" }]
+                   );}
+               );
+             }
+           }
+        } else if (rol === 'clinic') { // notificar paciente
+          data.id = note.groupId
+          data.fullName = note.userFullName
+          data.senderId = currentProfile.currentUserId
+          this.saveNotificationPromise(data)
+                                    .then(() => {})
+                                    .catch(() => {
+                                        Alert.alert(
+                                          "Error",
+                                          "No se puede notificar al otro usuario. Es posible que necesite reiniciar la aplicación.",
+                                          [{ text: "OK" }]
+                                        );}
+                                    );
+        }
 
     this.tasksInProgress -= 1;
 
@@ -438,6 +530,51 @@ class TidepoolApi {
       .catch(error => ({
         errorMessage: error.message,
       }));
+
+      let rol = '';
+
+      if ('clinic' in currentUser)
+        rol = 'clinic'
+      else if ('patient' in currentUser)
+        rol = 'patient'
+
+      const data = { rol,
+                     id: currentProfile.currentUserId,
+                     time: timestamp.toISOString(),
+                     fullName: currentUser.fullName ,
+                     noteId: note.id,
+                     senderId: currentUser.userId,
+                     type: 'reply',
+                    }
+
+      if (rol === 'patient') {
+         const {clinics} = await this.fetchProfileUsersPromise({userId: currentProfile.userId})
+         for (let i = 0; i < clinics.length; i += 1) {
+             if (clinics[i].userid) {
+               data.id = clinics[i].userid
+               this.saveNotificationPromise(data)
+               .then(() => {})
+               .catch(() => {
+                   Alert.alert(
+                     "Error",
+                     "No se puede notificar al otro usuario. Es posible que necesite reiniciar la aplicación.",
+                     [{ text: "OK" }]
+                   );}
+               );
+             }
+         }
+      } else if (rol === 'clinic') { // send patient notification
+          data.id = note.groupId
+          this.saveNotificationPromise(data)
+                                    .then(() => {})
+                                    .catch(() => {
+                                        Alert.alert(
+                                          "Error",
+                                          "No se puede notificar al otro usuario. Es posible que necesite reiniciar la aplicación.",
+                                          [{ text: "OK" }]
+                                        );}
+                                    );
+      }
 
     this.tasksInProgress -= 1;
 
@@ -1029,6 +1166,182 @@ class TidepoolApi {
         });
     });
   }
+  //
+ // Async helpers Notifications
+ //
+
+ async saveTokenAsync({token, userId, rol}) {
+   if (ConnectionStatus.isOffline) {
+     return token;
+   }
+
+   this.tasksInProgress += 1;
+
+   const { errorMessage } = await this.saveTokenPromise({token, userId, rol})
+     .then(() => ({}))
+     .catch(() => ({}));
+
+   this.tasksInProgress -= 1;
+
+   return { errorMessage };
+ }
+
+ async signOutAsync({ userId, token }) {
+   this.tasksInProgress += 1;
+   const { errorMessage } = await this.removeTokenPromise({ userId, token})
+     .then(() => ({}))
+     .catch(() => ({}));
+
+   this.tasksInProgress -= 1;
+
+   return { errorMessage };
+ }
+
+ async readNotificationAsync({noteId, userId}) {
+
+   this.tasksInProgress += 1;
+
+   await this.readNotificationPromise({noteId, userId})
+     .then(() => {})
+     .catch(() =>{});
+
+   this.tasksInProgress -= 1;
+ }
+
+
+ // Promises Notifications
+ saveTokenPromise({ token, userId, rol }) {
+   const method = "POST";
+   const url = `/token/${userId}`;
+   const baseURL = this.baseURLNotifications;
+   const data = {rol, token}
+   const headers = { 'Accept': 'application/json',
+   'Content-Type': 'application/json'}
+   return new Promise((resolve, reject) => {
+     axios({ method, url, headers, baseURL, data, timeout })
+       .then(() => {
+         resolve();
+       })
+       .catch(() => {
+         reject();
+       });
+   });
+ }
+
+ // Remove Token
+ removeTokenPromise({ userId, token }) {
+   const method = "DELETE";
+   const url = `/token/${userId}`;
+   const baseURL = this.baseURLNotifications;
+   const data = {token}
+   const headers = { 'Accept': 'application/json',
+   'Content-Type': 'application/json'}
+
+   return new Promise((resolve, reject) => {
+
+     axios({ method, url, baseURL, headers, data, timeout })
+       .then(() => {
+           resolve();
+       })
+       .catch(() => {
+           reject();
+       });
+   });
+ }
+
+ // SAVE Notification
+
+ saveNotificationPromise(data) {
+   const method = "POST";
+   const url = `/notification/${data.id}`;
+   const baseURL = this.baseURLNotifications;
+   const headers = { 'Accept': 'application/json',
+   'Content-Type': 'application/json'}
+
+
+   return new Promise((resolve, reject) => {
+     axios({ method, url, baseURL, data, headers, timeout })
+       .then(response => {
+         const status = !!(response)
+         resolve({status});
+       })
+       .catch(() => {
+         reject();
+       });
+   });
+ }
+
+ readNotificationPromise(data) {
+   const method = "post";
+   const url = `/user-notified/${data.userId}`;
+   const baseURL = this.baseURLNotifications;
+
+   return new Promise((resolve, reject) => {
+     axios({ method, url, baseURL, data, timeout })
+       .then(response => {
+         const status = !!(response.data)
+         resolve({status});
+       })
+       .catch(() => {
+         reject();
+       });
+   });
+ }
+
+ fetchProfileUsersPromise({ userId }) {
+   const method = "get";
+   const url = `/metadata/users/${userId}/users`;
+   const baseURL = this.baseUrl;
+   const headers = { "x-tidepool-session-token": this.sessionToken };
+   return new Promise((resolve, reject) => {
+     axios({ method, url, baseURL, headers, timeout })
+       .then((response) => {
+         if (response.data) {
+           resolve({ clinics: response.data });
+         }
+       })
+       .catch(error => {
+         reject(error);
+       });
+   });
+ }
+
+ async fetchNotificationsAsync({ userId }) {
+
+   this.tasksInProgress += 1;
+
+   let notifications = []
+
+   await this.fetchNotificationsUsersPromise({ userId })
+     .then(response => {
+       notifications = response.notes;
+     }).catch(() => {})
+
+   this.tasksInProgress -= 1;
+
+   return {notifications}
+ }
+
+ fetchNotificationsUsersPromise({ userId }) {
+   const method = "get";
+   const url = `/notification/${userId}`;
+   const baseURL = this.baseURLNotifications;
+
+   return new Promise((resolve, reject) => {
+     axios({ method, url, baseURL, timeout })
+       .then((response) => {
+         let notes = []
+
+         if (response.data && response.data.notes)
+           ({ notes } = response.data);
+
+         resolve({notes})
+       })
+       .catch(error => {
+         reject(error);
+       });
+   });
+ }
 }
 
 export { TidepoolApi };
