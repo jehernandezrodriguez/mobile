@@ -62,7 +62,7 @@ playground.xcworkspace
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
-# Pods/
+Pods/
 
 # Carthage
 #
@@ -87,10 +87,21 @@ fastlane/test_output
 # https://github.com/github/gitignore/blob/masterandroid.gitignore
 #
 
+iOSInjectionProject/
+
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+**/xcshareddata/WorkspaceSettings.xcsettings
+
 
 # Built application files
 *.apk
 *.ap_
+*.aab
 
 # Files for the ART/Dalvik VM
 *.dex
@@ -128,7 +139,8 @@ captures/
 
 # Keystore files
 # Uncomment the following line if you do not want to check your keystore files in.
-#*.jks
+*.jks
+*.keystore
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
@@ -251,3 +263,5 @@ npm-debug.*
 web-build/
 web-report/
 
+.DS_Store
+*.der
