@@ -1260,6 +1260,16 @@ class TidepoolApi {
 
 
    return new Promise((resolve, reject) => {
+     if (data.senderId === data.id) {
+       Alert.alert(
+         "Notificación ClouDi",
+         "Estas checheando tus propios datos. Si deseas revisar los de otra persona, da clic en cambiar perfil.",
+         [{ text: "OK" }]
+       );
+       resolve({ok: true});
+       return;
+     }
+
      axios({ method, url, baseURL, data, headers, timeout })
        .then(response => {
          const status = !!(response)
@@ -1324,7 +1334,7 @@ class TidepoolApi {
 
  fetchNotificationsUsersPromise({ userId }) {
    const method = "get";
-   const url = `/notification/${userId}`;
+   const url = `/unread-notifications/${userId}`;
    const baseURL = this.baseURLNotifications;
 
    return new Promise((resolve, reject) => {

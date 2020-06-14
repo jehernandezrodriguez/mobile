@@ -30,10 +30,11 @@ class HomeScreen extends PureComponent {
   }
 
   componentDidMount() {
-    const { currentProfile, notesFetchAsync } = this.props;
+    const { currentProfile, notesFetchAsync, currentUser } = this.props;
     Metrics.track({ metric: "Viewed Home Screen (Home Screen)" });
     notesFetchAsync({
       profile: currentProfile,
+      userId: currentUser.userId,
     });
   }
 

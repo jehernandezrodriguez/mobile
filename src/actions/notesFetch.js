@@ -34,16 +34,14 @@ const notesFetchDidFail = ({ profile, errorMessage }) => ({
   payload: { profile, errorMessage },
 });
 
-const notesFetchAsync = ({ profile }) => async dispatch => {
+const notesFetchAsync = ({ profile, userId }) => async dispatch => {
   dispatch(notesFetchDidStart({ profile }));
 
   const { notes, errorMessage } = await api().fetchNotesAsync({
     userId: profile.userId,
   });
 
-  const { notifications } = await api().fetchNotificationsAsync({
-    userId: profile.userId,
-  })
+  const { notifications } = await api().fetchNotificationsAsync({ userId })
 
   if (errorMessage) {
     dispatch(notesFetchDidFail({ profile, errorMessage }));
@@ -76,7 +74,7 @@ const notesSwitchProfileAndFetchAsync = ({
   profile,
 }) => async dispatch => {
   dispatch(currentProfileSaveAsync({ authUser, profile }));
-  dispatch(notesFetchAsync({ profile }));
+  dispatch(notesFetchAsync({ profile, userId: authUser.userId }));
 };
 
 export {

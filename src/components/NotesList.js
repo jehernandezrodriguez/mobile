@@ -144,11 +144,11 @@ class NotesList extends PureComponent {
   };
 
   onRefresh = () => {
-    const { notesFetchAsync, currentProfile } = this.props;
+    const { notesFetchAsync, currentProfile, currentUser } = this.props;
 
     this.setState({ refreshing: true });
     Metrics.track({ metric: "Swiped down to refresh" });
-    notesFetchAsync({ profile: currentProfile });
+    notesFetchAsync({ profile: currentProfile, userId: currentUser.userId });
   };
 
   keyExtractor = item => item.id;
