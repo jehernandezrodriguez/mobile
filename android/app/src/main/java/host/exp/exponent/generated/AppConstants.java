@@ -12,7 +12,7 @@ import host.exp.exponent.Constants;
 public class AppConstants {
 
   public static final String VERSION_NAME = "2.9.2";
-  public static String INITIAL_URL = "exp://exp.host/@jehernandezrodriguez/Tidepool";
+  public static String INITIAL_URL = "exp://exp.host/@jehernandezrodriguez/ClouDi";
   public static final boolean IS_DETACHED = true;
   public static final String SHELL_APP_SCHEME = "exp0815d1104db745568824ac69a998de27";
   public static final String RELEASE_CHANNEL = "default";
@@ -23,26 +23,29 @@ public class AppConstants {
 
   static {
     List<Constants.EmbeddedResponse> embeddedResponses = new ArrayList<>();
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
         // ADD EMBEDDED RESPONSES HERE
         // START EMBEDDED RESPONSES
-        embeddedResponses.add(new Constants.EmbeddedResponse("https://exp.host/@jehernandezrodriguez/Tidepool", "assets://shell-app-manifest.json", "application/json"));
-        embeddedResponses.add(new Constants.EmbeddedResponse("https://d1wp6m56sqw74a.cloudfront.net/%40jehernandezrodriguez%2FTidepool%2F1.0.0%2F884b0000438869379fc37e597ff3ccb7-34.0.0-android.js", "assets://shell-app.bundle", "application/javascript"));
+        embeddedResponses.add(new Constants.EmbeddedResponse("https://exp.host/@jehernandezrodriguez/ClouDi", "assets://shell-app-manifest.json", "application/json"));
+        embeddedResponses.add(new Constants.EmbeddedResponse("https://d1wp6m56sqw74a.cloudfront.net/%40jehernandezrodriguez%2FClouDi%2F1.0.0%2Ffc08ed807091ebe5d61e2b32976ff9f0-34.0.0-android.js", "assets://shell-app.bundle", "application/javascript"));
         // END EMBEDDED RESPONSES
     EMBEDDED_RESPONSES = embeddedResponses;
   }
