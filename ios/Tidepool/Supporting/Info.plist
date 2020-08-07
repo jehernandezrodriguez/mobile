@@ -5,19 +5,19 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Tidepool</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.tidepool.blipnotesRN</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Tidepool</string>
+	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.1.1</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -31,12 +31,14 @@
 			<string>OAuthRedirect</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>org.tidepool.blipnotesRN</string>
+				<string>org.cloudi.diabetesios</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>EXAnalyticsDisabled</key>
+	<true/>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -58,6 +60,24 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Allow ClouDi to access your calendar</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow ClouDi to use your camera</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Allow ClouDi to access your contacts</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow ClouDi to use your location</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow ClouDi to access your microphone</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Allow ClouDi to access your device&apos;s accelerometer</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Give ClouDi permission to save photos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Give ClouDi permission to access your photos</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>Allow ClouDi to access your reminders</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -77,25 +97,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>EXAnalyticsDisabled</key>
-	<true/>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Allow Tidepool to access your calendar</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Allow Tidepool to use your camera</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Allow Tidepool to access your contacts</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allow Tidepool to use your location</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Allow Tidepool to access your microphone</string>
-	<key>NSMotionUsageDescription</key>
-	<string>Allow Tidepool to access your device's accelerometer</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Give Tidepool permission to save photos</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Give Tidepool permission to access your photos</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>Allow Tidepool to access your reminders</string>
 </dict>
 </plist>

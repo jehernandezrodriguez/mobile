@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B56386401DB9693800A0598C"
-               BuildableName = "Tidepool.app"
+               BuildableName = "ClouDi.app"
                BlueprintName = "Tidepool"
                ReferencedContainer = "container:Tidepool.xcodeproj">
             </BuildableReference>
@@ -27,13 +27,11 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B56386401DB9693800A0598C"
-            BuildableName = "Tidepool.app"
+            BuildableName = "ClouDi.app"
             BlueprintName = "Tidepool"
             ReferencedContainer = "container:Tidepool.xcodeproj">
          </BuildableReference>
@@ -56,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B56386401DB9693800A0598C"
-            BuildableName = "Tidepool.app"
+            BuildableName = "ClouDi.app"
             BlueprintName = "Tidepool"
             ReferencedContainer = "container:Tidepool.xcodeproj">
          </BuildableReference>
@@ -82,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B56386401DB9693800A0598C"
-            BuildableName = "Tidepool.app"
+            BuildableName = "ClouDi.app"
             BlueprintName = "Tidepool"
             ReferencedContainer = "container:Tidepool.xcodeproj">
          </BuildableReference>
