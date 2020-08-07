@@ -33,8 +33,8 @@
       "config": {
         "usesNonExemptEncryption": false
       },
-      "publishBundlePath": "ios/tidepool/Supporting/shell-app.bundle",
-      "publishManifestPath": "ios/tidepool/Supporting/shell-app-manifest.json"
+      "publishBundlePath": "ios/ClouDi/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/ClouDi/Supporting/shell-app-manifest.json"
     },
     "android": {
       "package": "com.cloudi.salud",
