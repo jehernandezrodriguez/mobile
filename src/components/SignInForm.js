@@ -69,7 +69,7 @@ class SignInForm extends PureComponent {
     return (
       <glamorous.View onLayout={this.onContainerViewLayout}>
         <glamorous.Image
-          source={require("../../assets/images/tidepool-logo-horizontal.png")}
+          source={require("../../assets/images/cloudi-logo-horizontal.png")}
           width={282}
           height={272}
           marginBottom={25}
